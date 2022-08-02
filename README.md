@@ -1,38 +1,46 @@
-# create-svelte
+## This Repository:
+Contains a basic demo app for the svelte-mount-on-scroll component
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
+to use:
 
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm i @mac-barrett/svelte-mount-on-scroll
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+then in your svelte file's script tag:
+```ts
+import { MountOnScroll } from '@mac-barrett/svelte-mount-on-scroll';
 ```
 
-## Building
+## About:
+Mounts a component to the screen once the component is in view of the browser's viewport.
+Useful for making snappy websites, where information or paragraphs are contained inside of the MountOnScroll component.
+Uses the built in svelte/transition fly
 
-To create a production version of your app:
+## Properties:
+Optional properties for customizing how your component will come into view:
 
-```bash
-npm run build
+```js
+/** Size Props for the placeholder div, needed in order to properly mount things in succession as opposed to all at once. Default: 100x100 */
+placeholderSizeProps = {
+    height: number,
+    width: number
+}
+
+/** Transition props for when the component mounts. Default: slides in from top */
+transitionProps = {
+    x: number,
+    y: number,
+    duration: number,
+    delay: number,
+}
 ```
 
-You can preview the production build with `npm run preview`.
+## Basic use example:
+You may also chose to leave the placeholderSizeProps & transitionProps fields empty, doing so will give you default behavior which is equivalent to the example below.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+```svelte
+<MountOnScroll placeholderSizeProps={{height: 100, width: 100}} transitionProps={{x: 0, y: -100, duration: 500, delay: 0}}>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam debitis, fugit pariatur sunt, laboriosam rerum nulla corporis tempora magnam nostrum aperiam quo atque sequi voluptate, aut hic omnis a eaque.</p>
+</MountOnScroll>
+```

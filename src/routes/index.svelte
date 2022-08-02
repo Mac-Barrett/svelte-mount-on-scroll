@@ -1,5 +1,5 @@
 <script>
-    import {MountOnScroll} from '$lib';
+    import { MountOnScroll } from '$lib';
 </script>
 
 <h1>Normal</h1>
