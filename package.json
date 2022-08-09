@@ -1,6 +1,6 @@
 {
     "name": "@mac-barrett/svelte-mount-on-scroll",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "A simple SvelteKit/Svelte component for snappy transitions and dynamic content!",
     "keywords": ["Svelte", "SvelteKit", "transitions", "dynamic", "component"],
     "homepage": "https://github.com/Mac-Barrett/svelte-mount-on-scroll.git",
