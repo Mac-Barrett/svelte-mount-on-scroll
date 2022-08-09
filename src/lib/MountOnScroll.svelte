@@ -6,23 +6,13 @@
     const dispatch = createEventDispatcher();
 
     /** Size Props for the placeholder div, needed in order to properly mount things in succession as opposed to all at once. Default: 100x100 */
-    interface SizeProps {
-        height?: number,
-        width?: number 
-    }
-    export let placeholderSizeProps: SizeProps = {
+    export let placeholderSizeProps: { height?: number, width?: number } = {
         height: 100,
         width: 100
     }
 
     /** Transition props for when the component mounts. Default: slides in from top */
-    interface TransitionProps {
-        x?: number,
-        y?: number,
-        duration?: number,
-        delay?: number
-    }
-    export let transitionProps: TransitionProps = {
+    export let transitionProps: { x?: number, y?: number, duration?: number, delay?: number } = {
         x: 0,
         y: 0,
         duration: 500,
@@ -65,24 +55,13 @@ The placeholderSizeProps take in numbers that translate to pixels.
   
 #### Properties:
 ```ts
-interface SizeProps {
-    height?: number,
-    width?: number 
-}
-// Default Values: 
-export let placeholderSizeProps: SizeProps = {
+/** Size Props for the placeholder div, needed in order to properly mount things in succession as opposed to all at once. Default: 100x100 */
+export let placeholderSizeProps: { height?: number, width?: number } = {
     height: 100,
     width: 100
 }
-
-interface TransitionProps {
-    x?: number,
-    y?: number,
-    duration?: number,
-    delay?: number
-}
-// Default Values:
-export let transitionProps: TransitionProps = {
+/** Transition props for when the component mounts. Default: Does nothing */
+export let transitionProps: { x?: number, y?: number, duration?: number, delay?: number } = {
     x: 0,
     y: 0,
     duration: 500,
