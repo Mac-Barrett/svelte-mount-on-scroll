@@ -4,15 +4,25 @@
     import { fly } from 'svelte/transition'
 
     /** Size Props for the placeholder div, needed in order to properly mount things in succession as opposed to all at once. Default: 100x100 */
-    export let placeholderSizeProps = {
+    interface SizeProps {
+        height?: number,
+        width?: number 
+    }
+    export let placeholderSizeProps: SizeProps = {
         height: 100,
         width: 100
     }
 
     /** Transition props for when the component mounts. Default: slides in from top */
-    export let transitionProps = {
+    interface TransitionProps {
+        x?: number,
+        y?: number,
+        duration?: number,
+        delay?: number
+    }
+    export let transitionProps: TransitionProps = {
         x: 0,
-        y: -100,
+        y: 0,
         duration: 500,
         delay: 0,
     };
@@ -40,11 +50,39 @@
     <div id="placeholder" style="--height: {placeholderSizeProps.height}px; --width: {placeholderSizeProps.width}px;"></div>
     {:else}
     <div in:fly={{ x: transitionProps.x, y: transitionProps.y, duration: transitionProps.duration, delay: transitionProps.delay }}>
-        <slot>
-        </slot>
+        <slot/>
     </div>
     {/if}
 </div>
+
+<!-- @component
+```ts
+interface SizeProps {
+    height?: number,
+    width?: number 
+}
+// Default Values
+export let placeholderSizeProps: SizeProps = {
+    height: 100,
+    width: 100
+}
+
+
+interface TransitionProps {
+    x?: number,
+    y?: number,
+    duration?: number,
+    delay?: number
+}
+// Default Values
+export let transitionProps: TransitionProps = {
+    x: 0,
+    y: 0,
+    duration: 500,
+    delay: 0,
+};
+```
+-->
 
 <style>
     #placeholder {

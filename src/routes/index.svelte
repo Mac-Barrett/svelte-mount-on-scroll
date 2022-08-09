@@ -14,10 +14,10 @@
 <h1>Normal</h1>
 <h1>Normal</h1>
 <h1>Normal</h1>
-<MountOnScroll>
+<MountOnScroll placeholderSizeProps={{height: 300}} transitionProps={{x: 300, duration: 2000}}>
     <h1>Inisde of a mount on scroll component</h1>
 </MountOnScroll>
-<MountOnScroll>
+<MountOnScroll transitionProps={{x: 400, y: -400, duration: 1000}}>
     <h1>Multiple tags inside of a mount on scroll component</h1>
     <h1>This and the above line should render simultaneously</h1>
 </MountOnScroll>
