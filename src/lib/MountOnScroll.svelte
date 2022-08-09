@@ -1,7 +1,9 @@
 <!-- ShowOnScroll mounts an element to the screen once it comes into view of the browser window -->
 <script lang="ts">
     import { onMount } from "svelte";
-    import { fly } from 'svelte/transition'
+    import { fly } from 'svelte/transition';
+    import { createEventDispatcher } from 'svelte';
+    const dispatch = createEventDispatcher();
 
     /** Size Props for the placeholder div, needed in order to properly mount things in succession as opposed to all at once. Default: 100x100 */
     interface SizeProps {
@@ -38,6 +40,8 @@
     function checkToMount() {
         let rect = div?.getBoundingClientRect();
         if(innerHeight > rect?.top) {
+            if (mounted === true) return; // Needed so 'mounted' only dispatches once
+            dispatch('mounted');
             mounted = true;
         }
     }
@@ -56,17 +60,20 @@
 </div>
 
 <!-- @component
+The MountOnScroll component uses the built in 'fly' svelte transition to mount its child components once in view of the screen.  
+The placeholderSizeProps take in numbers that translate to pixels.  
+  
+#### Properties:
 ```ts
 interface SizeProps {
     height?: number,
     width?: number 
 }
-// Default Values
+// Default Values: 
 export let placeholderSizeProps: SizeProps = {
     height: 100,
     width: 100
 }
-
 
 interface TransitionProps {
     x?: number,
@@ -74,14 +81,21 @@ interface TransitionProps {
     duration?: number,
     delay?: number
 }
-// Default Values
+// Default Values:
 export let transitionProps: TransitionProps = {
     x: 0,
     y: 0,
     duration: 500,
     delay: 0,
 };
+
 ```
+#### Events:
+```ts
+dispatch('mounted');
+```
+Triggered when the component mounts to the screen.  
+Use for whatever you'd like or suggest features for arguments to be passed through to make it more useful.
 -->
 
 <style>

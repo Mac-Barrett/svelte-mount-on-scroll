@@ -17,8 +17,8 @@ Mounts a component to the screen once the component is in view of the browser's 
 Useful for making snappy websites, where information or paragraphs are contained inside of the MountOnScroll component.
 Uses the built in svelte/transition fly
 
-## Properties:
-Optional properties for customizing how your component will come into view:
+#### Properties:
+Optional properties for customizing how your child components will come into view:
 
 ```ts
 /** Size Props for the placeholder div, manual tweaking is generally needed in order to properly mount things in succession as opposed to all at once. */
@@ -48,6 +48,13 @@ export let transitionProps: TransitionProps = {
     delay: 0,
 };
 ```
+
+#### Events:
+```ts
+dispatch('mounted');
+```
+Triggered when the component mounts to the screen.  
+Use for whatever you'd like or suggest features for arguments to be passed through to make it more useful.
 
 ## Basic use example:
 You may choose to fill every field out or you may leave some blank:
