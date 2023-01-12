@@ -1,6 +1,6 @@
 {
     "name": "@mac-barrett/svelte-mount-on-scroll",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "A simple SvelteKit/Svelte component for snappy transitions and dynamic content!",
     "keywords": [
         "Svelte",

@@ -1,23 +1,23 @@
-## This Repository:
-Contains a basic demo app for the svelte-mount-on-scroll component
-
-to use:
-
+# Svelte MountOnScroll Component:
+### Getting Started:
+Installing:
 ```bash
 npm i @mac-barrett/svelte-mount-on-scroll
 ```
 
-then in your svelte file's script tag:
+Importing to your page or components:
 ```ts
 import { MountOnScroll } from '@mac-barrett/svelte-mount-on-scroll';
 ```
+### See Also:
+[github.com](https://github.com/Mac-Barrett/svelte-mount-on-scroll/)
 
 ## About:
 Mounts a component to the screen once the component is in view of the browser's viewport.
 Useful for making snappy websites, where information or paragraphs are contained inside of the MountOnScroll component.
 Uses the built in svelte/transitions fade & fly
 
-#### Properties:
+### Properties:
 Optional properties for customizing how your child components will come into view:
 
 ```ts
@@ -28,12 +28,10 @@ export let transitionProps: Partial<{ x: number, y: number, duration: number, de
 export let dismounts: boolean
 ```
 
-#### Events:
-```ts
-mountStart - Dispatched when the element(s) have started their animation and are mounting to the DOM.
-mountEnd - Dispatched when the element(s) have finished their animation and are mounted to the DOM.
-dismount - Dispatched when the element(s) have dismounted from the DOM.
-```
+### Events:
+- mountStart - Dispatched when the element(s) have started their animation and are mounting to the DOM.
+- mountEnd - Dispatched when the element(s) have finished their animation and are mounted to the DOM.
+- dismount - Dispatched when the element(s) have dismounted from the DOM.
 
 ## Basic use example:
 You may choose to fill every field out or you may leave some blank:
