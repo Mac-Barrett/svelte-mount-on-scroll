@@ -15,46 +15,45 @@ import { MountOnScroll } from '@mac-barrett/svelte-mount-on-scroll';
 ## About:
 Mounts a component to the screen once the component is in view of the browser's viewport.
 Useful for making snappy websites, where information or paragraphs are contained inside of the MountOnScroll component.
-Uses the built in svelte/transition fly
+Uses the built in svelte/transitions fade & fly
 
 #### Properties:
 Optional properties for customizing how your child components will come into view:
 
 ```ts
-/** Size Props for the placeholder div, needed in order to properly mount things in succession as opposed to all at once. Default: 100x100 */
-export let placeholderSizeProps: { height?: number, width?: number } = {
-    height: 100,
-    width: 100
-}
-/** Transition props for when the component mounts. Default: Does nothing */
-export let transitionProps: { x?: number, y?: number, duration?: number, delay?: number } = {
-    x: 0,
-    y: 0,
-    duration: 500,
-    delay: 0,
-};
+/** Used to define the config of the transition. If x or y key exists, then the "fly" transition is implicitly chosen. */
+export let transitionProps: Partial<{ x: number, y: number, duration: number, delay: number }>= (default: undefined)
+
+/** Will dismount the component when it is no longer on the screen */
+export let dismounts: boolean
 ```
 
 #### Events:
 ```ts
-dispatch('mounted');
+mountStart - Dispatched when the element(s) have started their animation and are mounting to the DOM.
+mountEnd - Dispatched when the element(s) have finished their animation and are mounted to the DOM.
+dismount - Dispatched when the element(s) have dismounted from the DOM.
 ```
-Triggered when the component mounts to the screen.  
-Use for whatever you'd like or suggest features for arguments to be passed through to make it more useful.
 
 ## Basic use example:
 You may choose to fill every field out or you may leave some blank:
 
 ```svelte
-<MountOnScroll transitionProps={{x: 0, y: -100, duration: 500, delay: 0}}>
-    <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-    </p>
+<MountOnScroll transitionProps={{ duration: 1000 }}>
+    <h1>A MountOnScroll that simply fades in.</h1>
 </MountOnScroll>
 
-<MountOnScroll placeholderSizeProps={{height: 200}} transitionProps={{y: -100, duration: 500}}>
-    <div>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-    </div>
+<MountOnScroll transitionProps={{ x: -200, y: 0, duration: 500, delay: 0 }}>
+    <h1>A MountOnScroll that flys in from the left.</h1>
+</MountOnScroll>
+
+<MountOnScroll
+    dismounts={true}
+    transitionProps={{ x: 400, y: 0, duration: 4000, delay: 0 }}
+    on:mountStart={() => console.log('Hello World!')}
+    on:mountEnd={() => console.log('I have finished mounting!')}
+    on:dismount={() => console.log('Goodbye, sweet prince...')}
+>
+    <h1 class="inside">A MountOnScroll with all of its components defined.</h1>
 </MountOnScroll>
 ```

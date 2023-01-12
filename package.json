@@ -1,34 +1,43 @@
 {
     "name": "@mac-barrett/svelte-mount-on-scroll",
-    "version": "1.1.3",
+    "version": "1.2.0",
     "description": "A simple SvelteKit/Svelte component for snappy transitions and dynamic content!",
-    "keywords": ["Svelte", "SvelteKit", "transitions", "dynamic", "component"],
+    "keywords": [
+        "Svelte",
+        "SvelteKit",
+        "transitions",
+        "dynamic",
+        "component"
+    ],
     "homepage": "https://github.com/Mac-Barrett/svelte-mount-on-scroll.git",
     "bugs": {
-      "url": "https://github.com/Mac-Barrett/svelte-mount-on-scroll/issues"
+        "url": "https://github.com/Mac-Barrett/svelte-mount-on-scroll/issues"
     },
     "author": {
-      "name": "Mac Barrett",
-      "email": "maccabee.barrett3@gmail.com"
-    },	
+        "name": "Mac Barrett",
+        "email": "maccabee.barrett3@gmail.com"
+    },
     "scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"package": "svelte-kit package",
-		"preview": "vite preview",
-		"check": "svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
-		"svelte": "^3.44.0",
-		"svelte-check": "^2.7.1",
-		"svelte-preprocess": "^4.10.6",
-		"svelte2tsx": "^0.5.13",
-		"tslib": "^2.3.1",
-		"typescript": "^4.7.4",
-		"vite": "^3.0.0"
-	},
-	"type": "module"
+        "dev": "vite dev",
+        "build": "vite build",
+        "package": "svelte-kit package",
+        "preview": "vite preview",
+        "check": "svelte-check --tsconfig ./tsconfig.json",
+        "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+    },
+    "devDependencies": {
+        "@sveltejs/adapter-auto": "next",
+        "@sveltejs/kit": "next",
+        "svelte": "^3.44.0",
+        "svelte-check": "^2.7.1",
+        "svelte-preprocess": "^4.10.6",
+        "svelte2tsx": "^0.5.13",
+        "tslib": "^2.3.1",
+        "typescript": "^4.7.4",
+        "vite": "^3.0.0"
+    },
+    "type": "module",
+    "dependencies": {
+        "@sveltejs/package": "^1.0.2"
+    }
 }
